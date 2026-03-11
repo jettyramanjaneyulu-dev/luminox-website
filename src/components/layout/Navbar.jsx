@@ -69,7 +69,7 @@ const navLinks = [
 const Navbar = () => {
   const [menuOpen,       setMenuOpen]       = useState(false);
   const [scrolled,       setScrolled]       = useState(false);
-  const [scrollY,        setScrollY]        = useState(0);
+  // const [scrollY,        setScrollY]        = useState(0);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [isMobile,       setIsMobile]       = useState(false);
@@ -91,7 +91,7 @@ const Navbar = () => {
   const onScroll = () => {
     const current = window.scrollY;
     setScrolled(current > 60);
-    setScrollY(current);
+    // setScrollY(current);
 
     // Mobile → always visible
     if (window.innerWidth < 1024) {

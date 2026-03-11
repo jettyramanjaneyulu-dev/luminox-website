@@ -6,7 +6,6 @@ import Doctors from './pages/Doctors';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Appointment from './pages/Appointment';
-import BeforeAfter from './pages/BeforeAfter';
 
 import LaserTreatments from './pages/LaserTreatments';
 import Injectables from './pages/Injectables';
@@ -31,7 +30,6 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/appointment" element={<Appointment />} />
-        <Route path="/before-after" element={<BeforeAfter />} />
 
         <Route path="/laser-treatments" element={<LaserTreatments />} />
         <Route path="/injectables" element={<Injectables />} />

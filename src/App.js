@@ -1,5 +1,5 @@
+import ScrollToTop from "./ScrollToTop";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ScrollToTop } from './components/layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Doctors from './pages/Doctors';
@@ -23,6 +23,7 @@ function App() {
     
       <Routes>
         {/* Main pages */}
+        <ScrollToTop />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/doctors" element={<Doctors />} />

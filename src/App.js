@@ -1,4 +1,3 @@
-import ScrollToTop from "./ScrollToTop";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -15,13 +14,15 @@ import SkinCare from './pages/SkinCare';
 import MedicalDermatology from './pages/MedicalDermatology';
 
 import ServiceDetail from './pages/ServiceDetail';
+// import ScrollToTop from "./ScrollToTop";
+
 
 function App() {
   return (
     <BrowserRouter>
 
       {/* Scroll reset component */}
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
 
       <Routes>
         <Route path="/" element={<Home />} />

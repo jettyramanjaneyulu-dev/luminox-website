@@ -368,6 +368,9 @@ const Hero = () => {
           .hero-grid > div:last-child {
             display: none !important;
           }
+             .hero-container {
+    padding-top: 5px !important;
+  }
         }
       `}</style>
     </section>

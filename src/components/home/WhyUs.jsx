@@ -46,25 +46,25 @@ const WhyUs = () => {
     const setHidden = () => {
       header.style.opacity = '0';
       header.style.transform = 'translateY(40px)';
-      header.style.transition = 'opacity 0.7s ease 0s, transform 0.7s ease 0s';
+      header.style.transition =
+        'opacity 0.7s ease 0s, transform 0.7s ease 0s';
 
       cards.forEach((card, i) => {
         if (!card) return;
-        // Row 1 (0,1,2): slide up | Row 2 (3,4,5): slide up
-        // Column alternation: left col from left, mid from bottom, right col from right
         const col = i % 3;
         const fromX = col === 0 ? '-50px' : col === 2 ? '50px' : '0px';
         const fromY = col === 1 ? '60px' : '40px';
         card.style.opacity = '0';
         card.style.transform = `translateX(${fromX}) translateY(${fromY}) scale(0.95)`;
-        card.style.transition = `opacity 0.65s ease ${0.1 + i * 0.1}s, transform 0.65s ease ${0.1 + i * 0.1}s`;
+        card.style.transition = `opacity 0.65s ease ${
+          0.1 + i * 0.1
+        }s, transform 0.65s ease ${0.1 + i * 0.1}s`;
       });
     };
 
     const setVisible = () => {
       header.style.opacity = '1';
       header.style.transform = 'translateY(0)';
-
       cards.forEach((card) => {
         if (!card) return;
         card.style.opacity = '1';
@@ -76,115 +76,158 @@ const WhyUs = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible();
-        } else {
-          setHidden();
-        }
+        entry.isIntersecting ? setVisible() : setHidden();
       },
       { threshold: 0.08 }
     );
 
     if (section) observer.observe(section);
+
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} style={{
-      padding: '100px 0',
-      background: '#FAF8F5',
-    }}>
-      <div className="container">
-
+    <section
+      ref={sectionRef}
+      style={{
+        padding: '100px 0',
+        background: '#FAF8F5',
+        overflowX: 'hidden',
+      }}
+    >
+      <div
+        className="container"
+        style={{
+          maxWidth: 1200,
+          margin: '0 auto',
+          padding: '0 20px',
+          boxSizing: 'border-box',
+        }}
+      >
         {/* Header */}
-        <div ref={headerRef} style={{
-          textAlign: 'center', marginBottom: 60,
-        }}>
-          <div style={{
-            fontFamily: "'Jost', sans-serif",
-            fontSize: 14, fontWeight: 600,
-            letterSpacing: 3, textTransform: 'uppercase',
-            color: '#C9A96E',
-          }}>Why Luminox</div>
-          <div style={{
-            width: 60, height: 2,
-            background: 'linear-gradient(90deg, #C9A96E, #6B4FA0)',
-            margin: '16px auto',
-          }} />
-          <h2 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(36px, 4vw, 52px)',
-            fontWeight: 700, color: '#2C2C4A',
-          }}>
+        <div ref={headerRef} style={{ textAlign: 'center', marginBottom: 60 }}>
+          <div
+            style={{
+              fontFamily: "'Jost', sans-serif",
+              fontSize: 14,
+              fontWeight: 600,
+              letterSpacing: 3,
+              textTransform: 'uppercase',
+              color: '#C9A96E',
+              marginBottom: 16,
+            }}
+          >
+            Why Luminox
+          </div>
+
+          <h2
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: 'clamp(36px, 4vw, 52px)',
+              fontWeight: 700,
+              color: '#2C2C4A',
+              margin: 0,
+            }}
+          >
             The Luminox{' '}
             <span style={{ color: '#6B4FA0', fontStyle: 'italic' }}>
               Difference
             </span>
           </h2>
-          <p style={{
-            fontFamily: "'Jost', sans-serif",
-            fontSize: 17, color: '#8A8A9A',
-            maxWidth: 500, margin: '16px auto 0',
-            lineHeight: 1.8,
-          }}>
-            We combine expertise, technology and genuine care
-            to deliver exceptional results every time
+
+          <p
+            style={{
+              fontFamily: "'Jost', sans-serif",
+              fontSize: 17,
+              color: '#8A8A9A',
+              maxWidth: 500,
+              margin: '16px auto 0',
+              lineHeight: 1.8,
+            }}
+          >
+            We combine expertise, technology and genuine care to deliver
+            exceptional results every time
           </p>
         </div>
 
         {/* Cards Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 24,
-        }} className="why-grid">
+        <div
+          className="why-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 24,
+            width: '100%',
+            boxSizing: 'border-box',
+          }}
+        >
           {reasons.map((item, i) => (
             <div
               key={i}
-              ref={el => cardRefs.current[i] = el}
+              ref={(el) => (cardRefs.current[i] = el)}
               style={{
-                background: 'white', borderRadius: 4,
-                padding: '40px 32px', textAlign: 'center',
+                background: 'white',
+                borderRadius: 4,
+                padding: '40px 32px',
+                textAlign: 'center',
                 border: '1px solid #F0EBE3',
-                transition: 'all 0.3s', cursor: 'default',
+                transition: 'all 0.3s',
+                cursor: 'default',
+                boxSizing: 'border-box',
               }}
-              onMouseEnter={e => {
+              onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = '#C9A96E';
                 e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = '0 16px 40px rgba(107,79,160,0.10)';
+                e.currentTarget.style.boxShadow =
+                  '0 16px 40px rgba(107,79,160,0.10)';
               }}
-              onMouseLeave={e => {
+              onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = '#F0EBE3';
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              {/* Icon circle */}
-              <div style={{
-                width: 80, height: 80, borderRadius: '50%',
-                background: 'linear-gradient(135deg, rgba(107,79,160,0.08), rgba(201,169,110,0.08))',
-                display: 'flex', alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 36, margin: '0 auto 22px',
-                border: '1px solid rgba(201,169,110,0.2)',
-                transition: 'transform 0.3s, background 0.3s',
-              }}>
+              {/* Icon */}
+              <div
+                style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  background:
+                    'linear-gradient(135deg, rgba(107,79,160,0.08), rgba(201,169,110,0.08))',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 36,
+                  margin: '0 auto 22px',
+                  border: '1px solid rgba(201,169,110,0.2)',
+                  transition: 'transform 0.3s, background 0.3s',
+                }}
+              >
                 {item.icon}
               </div>
 
-              <h3 style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 26, fontWeight: 600,
-                color: '#2C2C4A', marginBottom: 14,
-              }}>
+              <h3
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: 26,
+                  fontWeight: 600,
+                  color: '#2C2C4A',
+                  marginBottom: 14,
+                }}
+              >
                 {item.title}
               </h3>
 
-              <p style={{
-                fontFamily: "'Jost', sans-serif",
-                fontSize: 16, color: '#8A8A9A',
-                lineHeight: 1.85,
-              }}>
+              <p
+                style={{
+                  fontFamily: "'Jost', sans-serif",
+                  fontSize: 16,
+                  color: '#8A8A9A',
+                  lineHeight: 1.85,
+                  margin: 0,
+                }}
+              >
                 {item.desc}
               </p>
             </div>
@@ -198,6 +241,7 @@ const WhyUs = () => {
             grid-template-columns: repeat(2, 1fr) !important;
           }
         }
+
         @media (max-width: 600px) {
           .why-grid {
             grid-template-columns: 1fr !important;

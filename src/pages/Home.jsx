@@ -24,7 +24,7 @@ const Home = () => {
       <HomeServices />
       <Stats />
       <WhyUs />
-      <BeforeAfter/>
+      <BeforeAfter />
       <Testimonials />
       <AppointmentForm />
       <VideoSection />
